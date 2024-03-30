@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient</title>
+    <style>
+        *{
+            margin: auto;
+            padding: auto;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(to right,#1bf36a,#3a63d8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        button{
+            display: inline;
+            border-radius: 50px;
+            margin: 20px;
+            box-shadow: 2px 2px rgb(9, 9, 9);
+            width: 200px;
+            height: 50px;
+            font-size: larger;
+        }
+
+        h2{
+            text-align: center;
+            padding: 40px;
+        }
+
+        .copycode{
+            border: 1px solid black;
+            text-align: center;
+            padding: 25px;
+            width: 300px;
+            height: 45px;
+            font-size: larger;
+            background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
+
+        }
+
+        .copycode:hover{
+            background-color: #FA8BFF;
+background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+
+        }
+        
+        #mybtn{
+            background-color: #26c1f0f6;
+        }
+
+        #mybtn2{
+            background-color: #88e722;
+        }
+
+
+    </style>
+</head>
+<body>
+   <section>
+    <div>
+        <button id="mybtn">#1bf36a</button>
+        <button id="mybtn2">#3a63d8</button>
+    </div>
+    <h2>Copy Your Code By Click On Below Text</h2>
+    <div class="copycode" onclick="alert('Your Color Code is Copied.')">
+    background-image: linear-gradient(to right,#1bf36a,#3a63d8);
+    </div>
+</section>
+    
+    <script>
+        let btn1=document.getElementById("mybtn");
+        let btn2=document.getElementById("mybtn2");
+        let cpoyDiv= document.querySelector(".copycode");
+        let rgb1 = "#004773";
+        let rgb2 = "#54d542";
+
+        const hexValues = () => { 
+            let myhexValues="012346789abcdef";
+            let color="#";
+            for (let i = 0; i<6; i++){
+                color = color + myhexValues[Math.floor(Math.random() * 15)];
+            }
+            
+            return color;
+        };
+
+        const hendlebtn1 = ()=>{
+            rgb1= hexValues();
+            console.log(rgb1);
+            btn1.innerText=rgb1;
+            document.body.style.backgroundImage= `linear-gradient(to right, ${rgb1},${rgb2})`;
+            cpoyDiv.innerHTML=`background-image: linear-gradient(to right, ${rgb1},${rgb2})`;
+        };
+
+        const hendlebtn2 = ()=>{
+            rgb2 =hexValues();
+            console.log(rgb2);
+            btn2.innerText=rgb2;
+            document.body.style.backgroundImage= `linear-gradient(to right, ${rgb1},${rgb2})`;
+            cpoyDiv.innerHTML=`background-image: linear-gradient(to right, ${rgb1},${rgb2})`;
+        };
+
+        btn1.addEventListener("click", hendlebtn1);
+        btn2.addEventListener("click", hendlebtn2);
+
+        cpoyDiv.addEventListener("click", ()=>{
+            navigator.clipboard.writeText(cpoyDiv.innerText);
+        }
+        );
+    </script>
+</body>
+</html>
